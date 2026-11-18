@@ -3,7 +3,10 @@
   "private": true,
   "version": "0.1.0",
   "description": "REZHO - Cameroon reservation platform (customer mobile app + provider dashboards)",
-  "workspaces": ["apps/*", "packages/*"],
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev": "concurrently -n mobile,admin -c green,cyan \"npm:dev:mobile\" \"npm:dev:admin\"",
     "dev:mobile": "npm run dev -w @rezho/mobile",
@@ -11,10 +14,15 @@
     "build": "npm run build -w @rezho/mobile && npm run build -w @rezho/admin",
     "typecheck": "npm run typecheck -w @rezho/mobile && npm run typecheck -w @rezho/admin",
     "preview:mobile": "npm run preview -w @rezho/mobile",
-    "preview:admin": "npm run preview -w @rezho/admin"
+    "preview:admin": "npm run preview -w @rezho/admin",
+    "build:mobile": "npm run build -w @rezho/mobile",
+    "build:admin": "npm run build -w @rezho/admin"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",
     "playwright": "^1.49.1"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }

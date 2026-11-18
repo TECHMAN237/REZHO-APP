@@ -83,3 +83,22 @@ Connexion démo : n’importe quel email / mot de passe (≥ 6 caractères).
 
 Aucun backend n’est connecté : pas de Supabase, PostgreSQL, Firebase, API ou paiement réel.
 Authentification, réservations, paiements et publications sont simulés côté client.
+
+## Déploiement sur Vercel
+
+Le dépôt contient **deux applications**. Sur Vercel, créez **un projet par application** à partir du même dépôt GitHub :
+
+| Projet Vercel | Root Directory (Settings → General) | Résultat |
+|---|---|---|
+| `rezho-mobile` | `apps/mobile` | Application client |
+| `rezho-admin` | `apps/admin` | Espaces partenaires (`/partner/hotels/login`, `/partner/restaurants/login`, `/partner/vehicles/login`) |
+
+Chaque dossier contient un `vercel.json` (framework Vite, commande `npm run build`, sortie `dist`, et la règle de
+réécriture vers `index.html` indispensable pour que les routes s’ouvrent en accès direct). Vercel détecte les
+workspaces npm et installe les dépendances depuis la racine du dépôt. Aucune variable d’environnement n’est requise.
+
+Si le projet Vercel est créé **sans Root Directory** (racine du dépôt), le `vercel.json` racine déploie l’application
+client (`npm run build -w @rezho/mobile`, sortie `apps/mobile/dist`).
+
+En cas d’échec de build, ouvrez l’onglet *Deployments → Build Logs* et vérifiez : Root Directory correct, Node.js 20+
+(Settings → General → Node.js Version), commande d’installation laissée par défaut (`npm ci` à la racine).
