@@ -16,7 +16,8 @@
     "preview:mobile": "npm run preview -w @rezho/mobile",
     "preview:admin": "npm run preview -w @rezho/admin",
     "build:mobile": "npm run build -w @rezho/mobile",
-    "build:admin": "npm run build -w @rezho/admin"
+    "build:admin": "npm run build -w @rezho/admin",
+    "build:vercel": "npm run build -w @rezho/mobile && npm run build -w @rezho/admin -- --base=/admin/ --outDir=../mobile/dist/admin --emptyOutDir"
   },
   "devDependencies": {
     "concurrently": "^9.1.2",

@@ -35,6 +35,9 @@ function KindAvailability() {
   return <FleetAvailabilityPage />;
 }
 
+// '/' in local dev; '/admin' when built with --base=/admin/ for the combined Vercel deployment.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/';
+
 export const router = createBrowserRouter([
   { path: '/', element: <Navigate to="/partner/login" replace /> },
   { path: '/partner', element: <Navigate to="/partner/login" replace /> },
@@ -71,4 +74,4 @@ export const router = createBrowserRouter([
     ],
   },
   { path: '*', element: <Navigate to="/partner/login" replace /> },
-]);
+], { basename });

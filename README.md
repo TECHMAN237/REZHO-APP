@@ -86,19 +86,22 @@ Authentification, réservations, paiements et publications sont simulés côté 
 
 ## Déploiement sur Vercel
 
-Le dépôt contient **deux applications**. Sur Vercel, créez **un projet par application** à partir du même dépôt GitHub :
+Un seul projet Vercel suffit : le `vercel.json` racine construit les deux applications et les sert depuis le même domaine.
 
-| Projet Vercel | Root Directory (Settings → General) | Résultat |
-|---|---|---|
-| `rezho-mobile` | `apps/mobile` | Application client |
-| `rezho-admin` | `apps/admin` | Espaces partenaires (`/partner/hotels/login`, `/partner/restaurants/login`, `/partner/vehicles/login`) |
+| Adresse | Application |
+|---|---|
+| `https://<votre-domaine>/` | Application client |
+| `https://<votre-domaine>/admin` | Espaces partenaires (redirige vers `/admin/partner/login`) |
+| `https://<votre-domaine>/admin/partner/hotels/login` | Connexion hôtel |
+| `https://<votre-domaine>/admin/partner/restaurants/login` | Connexion restaurant |
+| `https://<votre-domaine>/admin/partner/vehicles/login` | Connexion location de véhicules |
 
-Chaque dossier contient un `vercel.json` (framework Vite, commande `npm run build`, sortie `dist`, et la règle de
-réécriture vers `index.html` indispensable pour que les routes s’ouvrent en accès direct). Vercel détecte les
-workspaces npm et installe les dépendances depuis la racine du dépôt. Aucune variable d’environnement n’est requise.
+Réglages Vercel : Root Directory **vide** (racine du dépôt), Node.js 20+, aucune variable d’environnement. La commande
+`npm run build:vercel` construit l’application client dans `apps/mobile/dist` puis l’admin (avec `--base=/admin/`) dans
+`apps/mobile/dist/admin`. Les règles de réécriture renvoient `/admin/*` vers l’admin et tout le reste vers l’application client.
 
-Si le projet Vercel est créé **sans Root Directory** (racine du dépôt), le `vercel.json` racine déploie l’application
-client (`npm run build -w @rezho/mobile`, sortie `apps/mobile/dist`).
+Alternative : un projet Vercel par application, avec Root Directory `apps/mobile` ou `apps/admin` (chaque dossier a son
+propre `vercel.json`). Dans ce cas l’admin est servi à la racine de son domaine (`/partner/hotels/login`).
 
-En cas d’échec de build, ouvrez l’onglet *Deployments → Build Logs* et vérifiez : Root Directory correct, Node.js 20+
-(Settings → General → Node.js Version), commande d’installation laissée par défaut (`npm ci` à la racine).
+En cas d’échec de build, ouvrez *Deployments → Build Logs* et vérifiez Root Directory, la version de Node.js et que la
+commande d’installation est restée par défaut.

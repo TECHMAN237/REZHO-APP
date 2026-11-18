@@ -19,7 +19,7 @@ interface Props {
   items: PopularItem[];
   favorites: string[];
   onToggleFavorite: (id: string) => void;
-  /** Auto-rotation interval in ms (default 10 s). */
+  /** Auto-rotation interval in ms (default 3 s). */
   interval?: number;
 }
 
@@ -37,7 +37,7 @@ function ringOffset(i: number, index: number, n: number): number {
  * the left and the right card becomes the new centre (auto-rotation pauses while the
  * user touches / hovers the carousel, and is disabled when reduced motion is preferred).
  */
-export function PopularCarousel({ items, favorites, onToggleFavorite, interval = 10000 }: Props) {
+export function PopularCarousel({ items, favorites, onToggleFavorite, interval = 3000 }: Props) {
   const n = items.length;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);

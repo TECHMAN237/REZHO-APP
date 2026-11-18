@@ -68,7 +68,7 @@ export function HomeScreen() {
         {/* 1. Popular offers — auto-rotating cover-flow carousel (every 10 s) */}
         <section className="mt-4">
           <SectionHeader title="Offres populaires" to="/search" />
-          <PopularCarousel items={POPULAR} favorites={favorites} onToggleFavorite={toggleFavorite} interval={10000} />
+          <PopularCarousel items={POPULAR} favorites={favorites} onToggleFavorite={toggleFavorite} interval={3000} />
         </section>
 
         {/* 2. Promo banner — golden "offer" treatment */}
