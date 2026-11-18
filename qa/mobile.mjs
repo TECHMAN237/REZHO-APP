@@ -82,7 +82,7 @@ try {
   await shot('06-home');
 
   // Accommodation flow
-  await page.getByRole('link', { name: 'Hébergements' }).first().click();
+  await page.getByRole('link', { name: 'Hébergements Réserver', exact: true }).click();
   await page.waitForURL(/accommodations/);
   await expectVisible('text=Hébergements (', 'Accommodation list');
   await shot('07-accommodations');

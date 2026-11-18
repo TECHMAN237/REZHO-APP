@@ -1,6 +1,6 @@
 /**
  * Responsive check: no horizontal overflow and key elements visible
- * at mobile widths (375/390/430) and desktop widths (1280/1440/1600).
+ * at mobile widths (375/390/414/430) and desktop widths (1280/1440/1600).
  * Requires both dev servers (5173 + 5174).
  */
 import { chromium } from 'playwright';
@@ -21,7 +21,7 @@ const log = (name, ok, info = '') => {
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 
 // ---- Mobile app ----
-for (const width of [375, 390, 430]) {
+for (const width of [375, 390, 414, 430]) {
   const ctx = await browser.newContext({ viewport: { width, height: 820 }, isMobile: true, hasTouch: true });
   const page = await ctx.newPage();
   // Seed a logged-in session so protected routes render.

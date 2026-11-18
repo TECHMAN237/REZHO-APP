@@ -135,3 +135,54 @@ textarea::placeholder {
     transition-duration: 0ms !important;
   }
 }
+
+/* ---- Golden promo treatment (home banner) ---- */
+.gold-border {
+  background: linear-gradient(135deg, #f6e27a 0%, #c9a227 25%, #fff3b0 50%, #c9a227 75%, #f6e27a 100%);
+  background-size: 250% 250%;
+  animation: gold-flow 7s linear infinite;
+  box-shadow: 0 6px 18px rgba(201, 162, 39, 0.35);
+}
+.gold-badge {
+  background: linear-gradient(135deg, #fff3b0 0%, #e8c547 45%, #c9a227 100%);
+  box-shadow: 0 2px 8px rgba(201, 162, 39, 0.45);
+}
+.gold-text {
+  background: linear-gradient(90deg, #fff3b0 0%, #f0c94a 45%, #fff3b0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 0 rgba(0, 0, 0, 0.25));
+}
+.gold-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 236, 170, 0.3) 50%, transparent 65%);
+  transform: translateX(-100%);
+  animation: gold-shine 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+@keyframes gold-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 250% 50%;
+  }
+}
+@keyframes gold-shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  55%,
+  100% {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gold-border,
+  .gold-shine {
+    animation: none !important;
+  }
+}

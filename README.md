@@ -38,7 +38,8 @@ npm run typecheck      # tsc --noEmit sur les deux apps
 npm run build          # builds de production (apps/*/dist)
 node qa/mobile.mjs     # smoke test Playwright de l’app client (serveur 5173 requis)
 node qa/admin.mjs      # smoke test Playwright des dashboards (serveur 5174 requis)
-node qa/responsive.mjs # vérification des largeurs 375/390/430 et 1280/1440/1600
+node qa/responsive.mjs # vérification des largeurs 375/390/414/430 et 1024/1280/1440/1600
+node qa/home.mjs       # accueil : cadre iPhone 11, rotation du carrousel (10 s), bannière dorée
 ```
 
 Les tests Playwright utilisent le Chrome installé localement (`channel: 'chrome'`).
@@ -59,7 +60,7 @@ Les tests Playwright utilisent le Chrome installé localement (`channel: 'chrome
 | Réservations / détail | `/bookings`, `/bookings/:id` |
 | Favoris, Profil, Assistant | `/favorites`, `/profile`, `/assistant` |
 
-Sur desktop, l’app est présentée dans un cadre de téléphone (430 px). Sur mobile, elle occupe tout l’écran.
+Sur desktop, l’app est présentée dans un cadre de téléphone au format iPhone 11 (414 × 896 px). Sur mobile, elle occupe tout l’écran.
 Connexion démo : n’importe quel email / mot de passe (≥ 6 caractères).
 
 ### Espace partenaire (desktop)
