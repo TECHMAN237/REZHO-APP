@@ -1,0 +1,8 @@
+node_modules
+dist
+*.log
+.DS_Store
+qa/screenshots
+
+# third-party skill archive (not project source)
+ui-ux-pro-max-skill-main.zip
